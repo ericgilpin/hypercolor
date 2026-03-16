@@ -59,12 +59,12 @@ func _try_place_room() -> void:
 func _connect_rooms(room_a: Rect2i, room_b: Rect2i) -> void:
 	# Find the center cell of each room
 	var a = Vector2i(
-		room_a.position.x + room_a.size.x / 2,
-		room_a.position.y + room_a.size.y / 2
+		room_a.position.x + int(room_a.size.x / 2.0),
+		room_a.position.y + int(room_a.size.y / 2.0)
 	)
 	var b = Vector2i(
-		room_b.position.x + room_b.size.x / 2,
-		room_b.position.y + room_b.size.y / 2
+		room_b.position.x + int(room_b.size.x / 2.0),
+		room_b.position.y + int(room_b.size.y / 2.0)
 	)
 
 	# Carve an L-shaped path: go horizontal first, then vertical
@@ -94,8 +94,8 @@ func get_enemy_spawn_points() -> Array:
 	for i in range(1, rooms.size()):
 		var room = rooms[i]
 		points.append(Vector2i(
-			room.position.x + room.size.x / 2,
-			room.position.y + room.size.y / 2
+			room.position.x + int(room.size.x / 2.0),
+			room.position.y + int(room.size.y / 2.0)
 		))
 	return points
 
@@ -103,9 +103,9 @@ func get_enemy_spawn_points() -> Array:
 # Returns the center grid cell of the first placed room - used to spawn the player
 func get_first_room_center() -> Vector2i:
 	if rooms.is_empty():
-		return Vector2i(grid_width / 2, grid_height / 2)
+		return Vector2i(int(grid_width / 2.0), int(grid_height / 2.0))
 	var room = rooms[0]
 	return Vector2i(
-		room.position.x + room.size.x / 2,
-		room.position.y + room.size.y / 2
+		room.position.x + int(room.size.x / 2.0),
+		room.position.y + int(room.size.y / 2.0)
 	)

@@ -18,18 +18,8 @@ const NUM_ROOMS = 12
 
 const ENEMY_SCENE = preload("res://scenes/enemy.tscn")
 
-# Player light settings - edit here to change both lights at once
-const TORCH_COLOR = Color(1.0, 0.6, 0.27)    # warm orange
-const TORCH_ENERGY = 1.2
-const TORCH_SCALE = 3.0
-
-const AMBIENT_COLOR = Color(0.29, 0.1, 0.43)  # deep purple
-const AMBIENT_ENERGY = 0.4
-const AMBIENT_SCALE = 6.0
-
 
 func _ready() -> void:
-	_configure_lights()
 	hud.initialize(player)
 
 	var generator = DungeonGenerator.new()
@@ -38,18 +28,6 @@ func _ready() -> void:
 	_populate_tilemap(grid)
 	_place_player(generator.get_first_room_center())
 	_spawn_enemies(generator.get_enemy_spawn_points())
-
-
-func _configure_lights() -> void:
-	var torch = player.get_node("TorchLight")
-	torch.color = TORCH_COLOR
-	torch.energy = TORCH_ENERGY
-	torch.texture_scale = TORCH_SCALE
-
-	var glow = player.get_node("AmbientGlow")
-	glow.color = AMBIENT_COLOR
-	glow.energy = AMBIENT_ENERGY
-	glow.texture_scale = AMBIENT_SCALE
 
 
 func _populate_tilemap(grid: Array) -> void:

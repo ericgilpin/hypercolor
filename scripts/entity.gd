@@ -36,19 +36,25 @@ var attack_rating: int:
 
 # Defense: base + 1 per 2 DEX points (affects chance of being hit)
 var defense: int:
-	get: return base_defense + (stat_dexterity / 2)
+	get: return base_defense + int(stat_dexterity / 2.0)
 
 # Damage range: STR adds to max damage (1 extra per 2 STR above 10)
 var damage_min: int:
 	get: return base_damage_min
 
 var damage_max: int:
-	get: return base_damage_max + maxi(0, (stat_strength - 10) / 2)
+	get: return base_damage_max + maxi(0, int((stat_strength - 10) / 2.0))
 
 
 func _ready() -> void:
+	_init_stats()
 	current_life = max_life
 	current_mana = max_mana
+
+
+# Override in subclasses to set stat_ and base_ values before life/mana are computed
+func _init_stats() -> void:
+	pass
 
 
 func _physics_process(delta: float) -> void:

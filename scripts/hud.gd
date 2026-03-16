@@ -1,6 +1,9 @@
 extends CanvasLayer
 
-const ORB_SIZE = 58
+const ORB_SIZE = 150
+const ORB_MARGIN = 20
+const LABEL_FONT_SIZE = 18
+const LABEL_HEIGHT = 24
 const ORB_SHADER = preload("res://shaders/orb.gdshader")
 
 var player: Entity
@@ -42,18 +45,18 @@ func _build() -> void:
 	)
 	var life_orb = _make_orb_rect(_life_material)
 	life_orb.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-	life_orb.set_offset(SIDE_LEFT, 8)
-	life_orb.set_offset(SIDE_BOTTOM, -8)
-	life_orb.set_offset(SIDE_RIGHT, 8 + ORB_SIZE)
-	life_orb.set_offset(SIDE_TOP, -8 - ORB_SIZE)
+	life_orb.set_offset(SIDE_LEFT, ORB_MARGIN)
+	life_orb.set_offset(SIDE_BOTTOM, -ORB_MARGIN)
+	life_orb.set_offset(SIDE_RIGHT, ORB_MARGIN + ORB_SIZE)
+	life_orb.set_offset(SIDE_TOP, -ORB_MARGIN - ORB_SIZE)
 	add_child(life_orb)
 
 	_life_label = _make_orb_label()
 	_life_label.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-	_life_label.set_offset(SIDE_LEFT, 8)
-	_life_label.set_offset(SIDE_BOTTOM, -8 - ORB_SIZE - 2)
-	_life_label.set_offset(SIDE_RIGHT, 8 + ORB_SIZE)
-	_life_label.set_offset(SIDE_TOP, -8 - ORB_SIZE - 18)
+	_life_label.set_offset(SIDE_LEFT, ORB_MARGIN)
+	_life_label.set_offset(SIDE_BOTTOM, -ORB_MARGIN - ORB_SIZE - 2)
+	_life_label.set_offset(SIDE_RIGHT, ORB_MARGIN + ORB_SIZE)
+	_life_label.set_offset(SIDE_TOP, -ORB_MARGIN - ORB_SIZE - LABEL_HEIGHT)
 	add_child(_life_label)
 
 	# Mana orb — bottom right corner
@@ -64,18 +67,18 @@ func _build() -> void:
 	)
 	var mana_orb = _make_orb_rect(_mana_material)
 	mana_orb.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	mana_orb.set_offset(SIDE_RIGHT, -8)
-	mana_orb.set_offset(SIDE_BOTTOM, -8)
-	mana_orb.set_offset(SIDE_LEFT, -8 - ORB_SIZE)
-	mana_orb.set_offset(SIDE_TOP, -8 - ORB_SIZE)
+	mana_orb.set_offset(SIDE_RIGHT, -ORB_MARGIN)
+	mana_orb.set_offset(SIDE_BOTTOM, -ORB_MARGIN)
+	mana_orb.set_offset(SIDE_LEFT, -ORB_MARGIN - ORB_SIZE)
+	mana_orb.set_offset(SIDE_TOP, -ORB_MARGIN - ORB_SIZE)
 	add_child(mana_orb)
 
 	_mana_label = _make_orb_label()
 	_mana_label.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	_mana_label.set_offset(SIDE_RIGHT, -8)
-	_mana_label.set_offset(SIDE_BOTTOM, -8 - ORB_SIZE - 2)
-	_mana_label.set_offset(SIDE_LEFT, -8 - ORB_SIZE)
-	_mana_label.set_offset(SIDE_TOP, -8 - ORB_SIZE - 18)
+	_mana_label.set_offset(SIDE_RIGHT, -ORB_MARGIN)
+	_mana_label.set_offset(SIDE_BOTTOM, -ORB_MARGIN - ORB_SIZE - 2)
+	_mana_label.set_offset(SIDE_LEFT, -ORB_MARGIN - ORB_SIZE)
+	_mana_label.set_offset(SIDE_TOP, -ORB_MARGIN - ORB_SIZE - LABEL_HEIGHT)
 	add_child(_mana_label)
 
 
@@ -99,6 +102,6 @@ func _make_orb_rect(mat: ShaderMaterial) -> ColorRect:
 func _make_orb_label() -> Label:
 	var label = Label.new()
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.add_theme_font_size_override("font_size", 9)
+	label.add_theme_font_size_override("font_size", LABEL_FONT_SIZE)
 	label.add_theme_color_override("font_color", Color(0.8, 0.8, 0.8))
 	return label

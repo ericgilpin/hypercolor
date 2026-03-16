@@ -1,3 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Claude Code local settings (machine-specific permissions)
+.claude/
+
+# MCP config (machine-specific paths — re-run `claude mcp add --scope project` per machine)
+.mcp.json
+
+# Development screenshots
+screenshot.png
+screenshot.png.import

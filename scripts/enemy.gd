@@ -11,8 +11,7 @@ var state: State = State.IDLE
 var player: Entity = null
 
 
-func _ready() -> void:
-	# Basic grunt enemy stats - weaker than the player warrior
+func _init_stats() -> void:
 	stat_strength = 15
 	stat_dexterity = 10
 	stat_vitality = 12
@@ -22,6 +21,9 @@ func _ready() -> void:
 	base_attack_rating = 40
 	base_defense = 8
 	attack_cooldown = 1.4
+
+
+func _ready() -> void:
 	super._ready()
 	# Allow this node to receive mouse input events via its Area2D child
 	$ClickArea.input_event.connect(_on_click_area_input_event)

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c3uka6kkeri24" path="res://assets/sprites/enemy_placeholder.png" id="2_md0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
-size = Vector2(16, 24)
+size = Vector2(32, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
-size = Vector2(16, 24)
+size = Vector2(32, 20)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1352078853]
 script = ExtResource("1_7p1mj")

@@ -9,9 +9,7 @@ var is_moving: bool = false
 var attack_target: Entity = null
 
 
-func _ready() -> void:
-	# Set warrior-class starting stats before calling super,
-	# since super._ready() initializes current_health from stat_vitality
+func _init_stats() -> void:
 	stat_strength = 30
 	stat_dexterity = 20
 	stat_vitality = 25
@@ -21,6 +19,9 @@ func _ready() -> void:
 	base_attack_rating = 80
 	base_defense = 15
 	attack_cooldown = 0.7
+
+
+func _ready() -> void:
 	super._ready()
 	$Camera2D.make_current()
 

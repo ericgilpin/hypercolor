@@ -14,12 +14,12 @@ func _animate(text: String, color: Color) -> void:
 	var label = Label.new()
 	label.text = text
 	label.add_theme_color_override("font_color", color)
-	label.add_theme_font_size_override("font_size", 12)
+	label.add_theme_font_size_override("font_size", 22)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.position = Vector2(-16, -32)
+	label.position = Vector2(-32, -64)
 	add_child(label)
 
-	var drift = Vector2(randf_range(-10.0, 10.0), -40.0)
+	var drift = Vector2(randf_range(-20.0, 20.0), -80.0)
 
 	var tween = create_tween()
 	tween.set_parallel(true)
